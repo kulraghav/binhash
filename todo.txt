@@ -1,0 +1,92 @@
+
+package: binhash (folder binhash)
+module: BinHash (file BinHash.py)
+class: hasher  (class hasher)
+
+binhash > BinHash > hasher 
+
+"""
+
+BinHash.py
+
+class hasher():
+    def __init__(self, corpus='wiki', d=10000, k=500):
+        self.words =  get_top_words(corpus, d)         # Step 1
+        self.buckets = get_bucket_mapping(d, k)        # Step 2
+        .
+        .
+        .
+
+    def hash_text(self, text):
+        binary_vector = get_binary_vector(text)        # use self.words
+        binary_hash = get_binary_hash(binary_vector)   # use self.buckets
+        return binary_hash
+
+    def hash_docs(self, docs='path_to_docs'):
+        .
+        .
+        .
+        return hash_matrix
+
+    def hash_binary_vectors(self, binary_vectors):
+        .
+        .
+        .
+        return binary_hashes
+
+
+"""
+
+
+# Usage
+$ pip install binhash
+
+## Initialization
+>>> from binhash import BinHash
+>>> corpus = 'path_to_the_folder_containing_documents'
+>>> d = 10000
+>>> k = 500
+>>> hasher = BinHash.hasher(corpus, d, k)
+>>> sample_text = "this is a sample text"
+
+## Application
+>>> sample_hash = hasher.hash_text(sample_text)
+>>> hash_matrix = hasher.hash_docs(sample_docs)
+>>> sample_binary_hashes = hasher.hash_binary_vectors(sample_binary_vectors)
+
+
+
+"""
+Additional Explanation
+
+Final Goal: text --> binary_hash
+
+Step 1: text --> binary_vector (bag-of-words 0/1 vector)
+
+(corpus, d) --> words
+
+words = { i : w_i }    where i in {1, 2, ..., d}
+
+w_1 : word with highest tf-idf score
+w_2 : word with second highest tf-idf score
+w_3 : word with third highest tf-idf score
+.
+.
+.
+
+
+corpus: 'path_to_the_folder_containing_documents'
+--> tokenize
+--> sort the tokens by tf-idf score
+--> take only top-d tokens
+
+
+Step 2: binary_vector --> binary_hash
+
+(d, k) --> buckets
+
+buckets = { i : b_i } where i in {1, 2, ..., d}
+
+b_i = uniform random integer from 1 to k
+
+"""
