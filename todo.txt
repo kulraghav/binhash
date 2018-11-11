@@ -1,4 +1,35 @@
 
+"""
+    Date: 11 Nov 2018
+
+    Goal: 
+        1. Write hasher.__init__(corpus, d, k)
+            a. get_top_words(corpus, d) # from nltk.corpus import words
+            b. get_bucket_mapping(d, k)
+            c. get_rank(token)
+
+        2. Write hasher.hash_text(text) # compose the two hash tables (i) words (ii) buckets
+            a. text --> tokens :: string --> list of strings
+               - separate text into list of words
+               - stemming/lemmatization
+               - remove stopwords
+               
+            b. tokens --> list of non-zero indices in binary hash
+               - token --> ranks[token]
+               - ranks[token] --> buckets[ranks[token]]  
+
+        3. Test 1 and 2
+
+    Next:
+
+"""
+
+
+
+
+"""
+   Date: 6 Nov 2018
+"""
 package: binhash (folder binhash)
 module: BinHash (file BinHash.py)
 class: hasher  (class hasher)
@@ -37,7 +68,6 @@ class hasher():
 
 """
 
-
 # Usage
 $ pip install binhash
 
@@ -54,9 +84,8 @@ $ pip install binhash
 >>> hash_matrix = hasher.hash_docs(sample_docs)
 >>> sample_binary_hashes = hasher.hash_binary_vectors(sample_binary_vectors)
 
-
-
 """
+
 Additional Explanation
 
 Final Goal: text --> binary_hash
